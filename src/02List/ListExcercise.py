@@ -1,4 +1,4 @@
-from .List import *
+from List import *
 
 
 #######################################
@@ -21,7 +21,12 @@ def filter_index_operation(condition, lst):
     :param lst: the input list to be filtered
     :return: a list contains only elements that satisfy the condition (when sent into condition will return True)
     """
-    pass
+    res = []
+    for elem in lst:
+        if condition:
+            res.append(elem)
+    return res
+
 
 
 def filter_using_foldl(condition, lst):

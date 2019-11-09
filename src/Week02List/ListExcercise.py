@@ -123,8 +123,8 @@ def all_using_any(bool_list):
     :param bool_list: a boolean list to check
     :return: if the input `bool_list` is all true
     """
-    return any(bool_list)
-
+    neg_list = [not elem for elem in bool_list]
+    return not any(neg_list)
 
 def zip_with(func, lst1, lst2):
     """This function combines the corresponding element of `lst1` and `lst2` with the function `func`

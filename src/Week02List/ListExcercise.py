@@ -45,7 +45,12 @@ def filter_using_foldl(condition, lst):
     :param lst: the input list to be filtered
     :return: a list contains only elements that satisfy the condition (when sent into condition will return True)
     """
-    pass
+    return foldl(
+        start=[],
+        operation=lambda prev_res, elem: prev_res + [elem] if condition(elem) else prev_res,
+        lst=lst
+    )
+
 
 
 def filter_list_comprehension_sample():

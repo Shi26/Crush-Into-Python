@@ -78,7 +78,7 @@ def all_using_index(bool_list):
     :param bool_list: a boolean list to check
     :return: if the input `bool_list` is all true
     """
-    pass
+    return True if all(bool_list) else False
 
 
 def all_using_foldl(bool_list):
@@ -95,7 +95,11 @@ def all_using_foldl(bool_list):
     :param bool_list: a boolean list to check
     :return: if the input `bool_list` is all true
     """
-    pass
+    return foldl(
+        start=True,
+        operation=lambda prev_res, elem: prev_res and elem,
+        lst=bool_list
+    )
 
 
 def all_using_any(bool_list):
@@ -112,7 +116,7 @@ def all_using_any(bool_list):
     :param bool_list: a boolean list to check
     :return: if the input `bool_list` is all true
     """
-    pass
+    return any(bool_list)
 
 
 def zip_with(func, lst1, lst2):

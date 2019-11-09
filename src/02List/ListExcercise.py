@@ -23,7 +23,7 @@ def filter_index_operation(condition, lst):
     """
     res = []
     for elem in lst:
-        if condition:
+        if condition(elem):
             res.append(elem)
     return res
 

@@ -237,7 +237,7 @@ def is_elem(elem, lst):
     :param lst: see if the `elem` is in here
     :return: a boolean indicating whether `elem` is a element of the `lst`
     """
-    pass
+    return True if elem in lst else False
 
 
 def my_enumerate(lst):
@@ -254,7 +254,7 @@ def my_enumerate(lst):
     [(0, 1), (1, 2), (2, 3)]
 
     """
-    pass
+    
 
 
 def find_all(elem, lst):

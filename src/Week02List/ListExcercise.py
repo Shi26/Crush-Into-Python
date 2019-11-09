@@ -126,6 +126,7 @@ def all_using_any(bool_list):
     neg_list = [not elem for elem in bool_list]
     return not any(neg_list)
 
+
 def zip_with(func, lst1, lst2):
     """This function combines the corresponding element of `lst1` and `lst2` with the function `func`
 
@@ -170,7 +171,7 @@ def zip_using_zip_with(lst1, lst2):
     :param lst2: the input list 2
     :return: a list of tuple containing the corresponding element of `lst1` and `lst2`
     """
-    pass
+    return zip_with(lambda lst1, lst2: (lst1, lst2), lst1, lst2)
 
 
 def zip_with_using_zip(func, lst1, lst2):
@@ -197,8 +198,8 @@ def zip_with_using_zip(func, lst1, lst2):
     :param lst2: the input list 2
     :return: all the corresponding element of `lst1` and `lst2` combined with `func`
     """
-    pass
-
+    res = []
+    return [res.append(elem1 + elem2) for (elem1, elem2) in zip_using_zip_with(lst1, lst2)]
 
 def zip3_using_zip(lst1, lst2, lst3):
     """Uses zip with to implement a zip3 function

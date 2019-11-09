@@ -108,7 +108,7 @@ def all_using_foldl(bool_list):
 
 
 def all_using_any(bool_list):
-    """Implement the function all using any and list comprehension (no foldl and index operation allowed)
+    """Implement the function all using the `any` function and list comprehension (no foldl and index operation allowed)
 
     Python has a built in function called `all` that behave the same as this function
     This checks if a list is all True
@@ -209,7 +209,7 @@ def zip3_using_zip(lst1, lst2, lst3):
     [(1, 10, 2), (2, 20, 4), (3, 30, 6)]
     >>> zip3_using_zip([1, 2, 3], [10, 20, 30, 40, 50, 100], [2, 4, 6, 8])
     [(1, 10, 2), (2, 20, 4), (3, 30, 6)]
-    >>> zip_using_zip_with([2, 4, 6, 8], [10, 20, 30, 40, 50, 100], [1, 2, 3])
+    >>> zip3_using_zip([2, 4, 6, 8], [10, 20, 30, 40, 50, 100], [1, 2, 3])
     [(2, 10, 1), (4, 20, 2), (6, 30, 3)]
 
     NOTICE: code like `(1, 2)` or `(1, 2, 3)` are called a tuple, they are very similar to lists
@@ -286,6 +286,7 @@ def slicing(lst, start, end):
     [2, 3]
     >>> slicing([1, 2, 3], -1, 4)
     [1, 2, 3]
+    >>> slicing([1, 2, 3], -1, 2)
     [1, 2]
 
     :param lst: the list to slice

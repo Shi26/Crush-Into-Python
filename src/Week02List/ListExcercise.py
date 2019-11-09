@@ -218,7 +218,7 @@ def zip3_using_zip(lst1, lst2, lst3):
     :param lst3: the input list 3
     :return: a list of tuple containing the corresponding element of `lst1` and `lst2`
     """
-    pass
+    return list(zip(lst1, lst2, lst3))
 
 
 def is_elem(elem, lst):

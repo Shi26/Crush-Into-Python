@@ -198,8 +198,8 @@ def zip_with_using_zip(func, lst1, lst2):
     :param lst2: the input list 2
     :return: all the corresponding element of `lst1` and `lst2` combined with `func`
     """
-    res = []
-    return [res.append(elem1 + elem2) for (elem1, elem2) in zip_using_zip_with(lst1, lst2)]
+    return [func(elem1, elem2)for (elem1, elem2) in zip(lst1, lst2)]
+
 
 def zip3_using_zip(lst1, lst2, lst3):
     """Uses zip with to implement a zip3 function

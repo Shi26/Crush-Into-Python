@@ -254,7 +254,7 @@ def my_enumerate(lst):
     [(0, 1), (1, 2), (2, 3)]
 
     """
-    
+    return list(zip(range(len(lst)), lst))
 
 
 def find_all(elem, lst):
@@ -272,7 +272,7 @@ def find_all(elem, lst):
     :param elem: the element to find
     :param lst: to find `elem` in this list
     """
-    pass
+    return [index for (index, cur_elem) in enumerate(lst) if cur_elem == elem]
 
 
 def slicing(lst, start, end):

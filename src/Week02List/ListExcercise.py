@@ -294,6 +294,7 @@ def slicing(lst, start, end):
     :param end: the end index (element of this index will not be included in the result,
         if larger than length of input list, then slice to the end)
     """
+    return [elem for (cur_index, elem) in enumerate(lst) if start <= cur_index < end]
 
 
 def drinking_game(student_matrix):
@@ -309,7 +310,7 @@ def drinking_game(student_matrix):
     and we need to finally divide the score of each major by the number of student participated
 
     >>> drinking_game([("Max", "Math", 5, 1), ("Alex", "CS", 1, 2), ("Bay", "Math", 3, 1), ("Test", "CS", 1, 4)])
-    "CS"
+    'CS'
 
     then there are 4 students:
     - Max of math major drunk 5 beer and 1 wine, then he will get 5 + 1 * 4 = 9 point
@@ -322,7 +323,7 @@ def drinking_game(student_matrix):
     Therefore the function will return "CS" because CS major has won
 
     >>> drinking_game([("Max", "Math", 5, 1), ("Alex", "Math", 1, 2), ("Bay", "Math", 2, 1), ("Test", "CS", 1, 4)])
-    "CS"
+    'CS'
 
     then there are 4 students:
     - Max of math major drunk 5 beer and 1 wine, then he will get 5 + 1 * 4 = 9 point
@@ -340,7 +341,11 @@ def drinking_game(student_matrix):
         - third element is the beer drunk
         - fourth element is the wine drunk
     """
-    pass
+    math_personal_score = [beer + wine*4 for (name, major, beer, wine) in student_matrix if major == "Math"]
+    math_average = sum(math_personal_score) / len(math_personal_score)
+    cs_personal_score = [beer + wine * 4 for (name, major, beer, wine) in student_matrix if major == "CS"]
+    cs_average = sum(cs_personal_score) / len(cs_personal_score)
+    return "CS" if cs_average > math_average else "Math"
 
 
 def prime_test(n):
@@ -361,8 +366,9 @@ def prime_test(n):
     :param n: the input to check if it is a prime.
     :return a boolean to indicate if `n` is a prime.
     """
-    pass
 
+    factor_list = [elem for elem in range(1, n+1) if n % elem == 0]
+    return True if len(factor_list) == 2 else False
 
 if __name__ == '__main__':
     # test if the examples in documentation work

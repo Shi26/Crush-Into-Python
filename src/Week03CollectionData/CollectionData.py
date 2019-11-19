@@ -231,12 +231,12 @@ def generator_sample():
         :param n: the input to check if it is a prime.
         :return a boolean to indicate if `n` is a prime.
         """
-        if n is 1:
+        if n == 1:
             return False
         else:
             # notice that without a parentheses around a comprehension,
             # then python will assume it is generator comprehension
-            return not any(n % num is 0 for num in range(2, n))
+            return not any(n % num == 0 for num in range(2, n))
 
 
 def set_sample():

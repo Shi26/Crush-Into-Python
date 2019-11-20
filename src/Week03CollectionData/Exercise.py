@@ -97,8 +97,8 @@ def dict_zip_via_key(d1: Dict[Key, Val1], d2: Dict[Key, Val2]) -> Dict[Key, Tupl
     :param d2: the input dict 2
     :return: a dict mapping keys to tuples containing the corresponding value of that key in `d1` and `d2`
     """
-    key_set = {key for key in d1.keys() if key in d2.keys()}
-    return {key: (d1[key], d2[key]) for key in key_set}
+    common_key = {key for key in d1.keys() if key in d2.keys()}
+    return {key: (d1[key], d2[key]) for key in common_key}
 
 # QUESTION: Does zip on set make sense? why or why not?
 # Short Answer here:

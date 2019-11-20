@@ -130,7 +130,7 @@ def immutable_group_by(criteria: Callable[[A], B], s: FrozenSet[A]) -> FrozenSet
     :param s: the input frozen set
     :return: a frozen set of frozen set that is partitioned in the aforementioned fashion
     """
-    pass
+    return frozenset(frozenset(elem2 for elem2 in s if criteria(elem2) == criteria(elem1)) for elem1 in s)
 
 
 def mutable_group_by(criteria: Callable[[A], B], s: FrozenSet[A]) -> FrozenSet[FrozenSet[A]]:

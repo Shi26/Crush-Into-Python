@@ -29,7 +29,8 @@ def set_filter(condition: Callable[[A], bool], s: Set[A]) -> Set[A]:
     :param s: the input set
     :return: the filtered set such that only contain elements in `s` that satisfy the `condition`
     """
-    pass
+    return {elem for elem in s if condition(elem) is True}
+
 
 
 # notice that this type var `A` is different from the `A` from above
@@ -46,7 +47,7 @@ def filter_dict_val(condition: Callable[[Val], bool], d: Dict[Key, Val]) -> Dict
     :param condition: a function maps values in `d` to either `True` or `False`
     :param d:
     """
-    pass
+    return {key: val for (key, val) in d.items() if condition(val) is True}
 
 
 def list_to_gen(l: List[A]) -> Iterator[int]:

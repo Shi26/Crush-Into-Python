@@ -219,7 +219,11 @@ def get_word_count_dict(paragraph: str) -> Dict[str, int]:
     :param paragraph: a paragraph of text to count all the word for
     :return a dictionary maps all the word to its count
     """
-    pass
+    lower_paragraph = paragraph.lower()
+    word_list = lower_paragraph.split()
+    punctuation = ",.'"""
+    clean_word_list = [word.strip(punctuation) for word in word_list]
+    return {word: clean_word_list.count(word) for word in set(clean_word_list)}
 
 
 def count_pair(paragraph: str, word_pairs: Set[Tuple[str, str]]) -> Dict[Tuple[str, str], Tuple[int, int]]:
@@ -230,16 +234,16 @@ def count_pair(paragraph: str, word_pairs: Set[Tuple[str, str]]) -> Dict[Tuple[s
     By counting these words in pair, we can predict what group the author belongs in.
 
     >>> gb_us_word_pair = {("reckon", "think"), ("aubergine", "eggplant"), ("supermarket", "grocery")}
-    >>> res1 = count_pair("I reckon there should be some aubergine." gb_us_word_pair)
+    >>> res1 = count_pair("I reckon there should be some aubergine." , gb_us_word_pair)
     >>> res1 == {("reckon", "think"): (1, 0), ("aubergine", "eggplant"): (1, 0), ("supermarket", "grocery"): (0, 0)}
     True
-    >>> res2 = count_pair("Supermarket is right at the corner, I reckon." gb_us_word_pair)
+    >>> res2 = count_pair("Supermarket is right at the corner, I reckon." , gb_us_word_pair)
     >>> res2 == {("reckon", "think"): (1, 0), ("aubergine", "eggplant"): (0, 0), ("supermarket", "grocery"): (1, 0)}
     True
-    >>> res3 = count_pair("Gonna get some grocery." gb_us_word_pair)
+    >>> res3 = count_pair("Gonna get some grocery." , gb_us_word_pair)
     >>> res3 == {("reckon", "think"): (0, 0), ("aubergine", "eggplant"): (0, 0), ("supermarket", "grocery"): (0, 1)}
     True
-    >>> res4 = count_pair("" gb_us_word_pair)
+    >>> res4 = count_pair("" , gb_us_word_pair)
     >>> res4 == {("reckon", "think"): (0, 0), ("aubergine", "eggplant"): (0, 0), ("supermarket", "grocery"): (0, 0)}
     True
 
@@ -247,7 +251,11 @@ def count_pair(paragraph: str, word_pairs: Set[Tuple[str, str]]) -> Dict[Tuple[s
     :param word_pairs: a list of pair of word to count.
     :return: a dictionary that maps the pair of words to their counts (also a pair)
     """
-    pass
+    lower_paragraph = paragraph.lower()
+    word_set = lower_paragraph.split()
+    punctuation = ",.'"""
+    clean_word_set = [word.strip(punctuation) for word in word_set]
+    return {pair: (clean_word_set.count(pair[0]), clean_word_set.count(pair[1])) for pair in word_pairs}
 
 
 if __name__ == '__main__':

@@ -129,7 +129,10 @@ def immutable_group_by(criteria: Callable[[A], B], s: FrozenSet[A]) -> FrozenSet
     :param s: the input frozen set
     :return: a frozen set of frozen set that is partitioned in the aforementioned fashion
     """
-    return frozenset(frozenset(elem2 for elem2 in s if criteria(elem2) == criteria(elem1)) for elem1 in s)
+    return frozenset(
+        frozenset(
+            # for each 'representative', the 'elem' is in the set of the 'representative' if the 'criteria'  matches
+            elem for elem in s if criteria(elem) == criteria(representative)) for representative in s)
 
 
 def mutable_group_by(criteria: Callable[[A], B], s: FrozenSet[A]) -> FrozenSet[FrozenSet[A]]:
@@ -221,8 +224,11 @@ def get_word_count_dict(paragraph: str) -> Dict[str, int]:
     """
     lower_paragraph = paragraph.lower()
     word_list = lower_paragraph.split()
+
+    # strip punctuation
     punctuation = ",.'"""
     clean_word_list = [word.strip(punctuation) for word in word_list]
+
     return {word: clean_word_list.count(word) for word in set(clean_word_list)}
 
 
@@ -253,9 +259,12 @@ def count_pair(paragraph: str, word_pairs: Set[Tuple[str, str]]) -> Dict[Tuple[s
     """
     lower_paragraph = paragraph.lower()
     word_set = lower_paragraph.split()
+
+    # strip punctuation
     punctuation = ",.'"""
     clean_word_set = [word.strip(punctuation) for word in word_set]
-    return {pair: (clean_word_set.count(pair[0]), clean_word_set.count(pair[1])) for pair in word_pairs}
+
+    return {(fst_word, snd_word): (clean_word_set.count(fst_word), clean_word_set.count(snd_word)) for (fst_word, snd_word) in word_pairs}
 
 
 if __name__ == '__main__':
